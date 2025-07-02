@@ -1,20 +1,24 @@
 <script setup lang="ts">
-const { data: redirects, refresh } = await useFetch('/api/redirects', {
+const { data: redirects, refresh } = await useFetch("/api/redirects", {
   transform: (data: { [key: string]: string }) => {
     // Transform to text for the textarea
-    return { text: Object.entries(data).map(([from, to]) => `${from} ${to}`).join('\n') }
-  }
-})
+    return {
+      text: Object.entries(data)
+        .map(([from, to]) => `${from} ${to}`)
+        .join("\n"),
+    };
+  },
+});
 
-async function updateRedirects () {
+async function updateRedirects() {
   const body = Object.fromEntries(
-    redirects.value!.text.split('\n').map(line => line.split(' '))
-  )
-  await $fetch('/api/redirects', {
-    method: 'PUT',
-    body
-  })
-  await refresh()
+    redirects.value!.text.split("\n").map((line) => line.split(" "))
+  );
+  await $fetch("/api/redirects", {
+    method: "PUT",
+    body,
+  });
+  await refresh();
 }
 </script>
 

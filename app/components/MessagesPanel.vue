@@ -1,17 +1,17 @@
 <script setup lang="ts">
-const { data: messages, refresh } = await useFetch('/api/messages')
-const newMessage = ref('')
+const { data: messages, refresh } = await useFetch("/api/messages");
+const newMessage = ref("");
 
-async function sendMessage (){
-  if (!newMessage.value.trim()) return
-  await $fetch('/api/messages', {
-    method: 'POST',
+async function sendMessage() {
+  if (!newMessage.value.trim()) return;
+  await $fetch("/api/messages", {
+    method: "POST",
     body: {
-      text: newMessage.value
-    }
-  })
-  newMessage.value = ''
-  await refresh()
+      text: newMessage.value,
+    },
+  });
+  newMessage.value = "";
+  await refresh();
 }
 </script>
 
