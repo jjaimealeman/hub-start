@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: Ensure NuxtHub module is installed
         run: pnpx nuxthub@latest ensure
@@ -31,3 +31,5 @@ jobs:
         uses: nuxt-hub/action@v2
         with:
           project-key: hub-start-7ma6
+        env:
+          NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
