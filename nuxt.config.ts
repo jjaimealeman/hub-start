@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxthub/core',
     '@nuxt/eslint'
   ],
+  modules: ["@nuxthub/core", "@nuxt/eslint", "@nuxt/ui-pro"],
   hub: {
     database: true,
     kv: true,
